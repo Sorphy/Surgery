@@ -17,8 +17,11 @@ def patient(request):
 
 
 def patient_detail(request, id):
+    p = get_object_or_404(models.Patient, pk=id)
+    pres = models.Prescription.objects.all().filter(patient=p)
     context = {
-         'patient': get_object_or_404(models.Patient, pk=id)
+        'patient': p,
+        'prescriptions': pres
     }
 
     return render(request, 'Office/patient_detail.html', context)
