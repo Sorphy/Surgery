@@ -14,43 +14,32 @@
 <body>
 <header>
   <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Surgery</a>
+    <div class="nav-wrapper container"><a id="logo-container" href="{% url 'index' %}" class="brand-logo">Surgery</a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Patients</a></li>
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'patients' %}">Patients</a></li>
         <li><a href="#">Prescriptions</a></li>
-        <li><a href="#">Drugs</a></li>
+        <li><a href="{% url 'drugs' %}">Drugs</a></li>
       </ul>
     </div>
   </nav>
-
-
-  <div class="section no-pad-bot" id="index-banner">
-    <div class="container">
-      <br><br>
-      <h1 class="header center orange-text">Home</h1>
-      <div class="row center">
-        <h5 class="header col s12 light">Website for office management</h5>
-      </div>
-      <br><br>
-    </div>
-  </div>
 </header>
+<div style="height: 50px"></div>
 <main>
     <div class="container">
         {% block content %}
         {% endblock %}
      </div>
 </main>
-        <footer class="page-footer">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
+<div style="height: 200px"></div>
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
                 <p class="grey-text text-lighten-4">Made by: Szkandera Ondřej</p>
-              </div>
             </div>
-          </div>
-        </footer>
-
+        </div>
+    </div>
+</footer>
 </body>
 </html>

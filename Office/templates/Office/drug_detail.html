@@ -1,0 +1,15 @@
+{% extends 'Office/layout.html' %}
+
+{% block content %}
+
+    <ul class="collection with-header">
+        <li class="collection-header"><h4>{{ drug.name }}</h4></li>
+        <li class="collection-item">Drug ID: {{ drug.id }}</li>
+        <li class="collection-item">Gram: {{ drug.gram }} mg</li>
+        <li class="collection-item">Number of pills: {{ drug.number_of_pills }}</li>
+    </ul>
+    <p>
+        <b>Description:</b><br>
+        {{ drug.description }}
+    </p>
+{% endblock %}

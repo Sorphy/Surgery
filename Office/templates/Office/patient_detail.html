@@ -1,0 +1,13 @@
+{% extends 'Office/layout.html' %}
+
+{% block content %}
+
+    <ul class="collection with-header">
+        <li class="collection-header"><h4>{{ patient.first_name }} {{ patient.last_name }}</h4></li>
+        <li class="collection-item">Patient ID: {{ patient.id }}</li>
+        <li class="collection-item">Birthday: {{ patient.birthday }}</li>
+        <li class="collection-item">Weight: {{ patient.weight }}</li>
+        <li class="collection-item">Height: {{ patient.height }}</li>
+    </ul>
+
+{% endblock %}

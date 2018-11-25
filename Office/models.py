@@ -8,13 +8,15 @@ class Patient(models.Model):
     last_name = models.CharField(max_length=50)
     birthday = models.DateField()
     height = models.IntegerField()
-    weight = models.DecimalField(max_digits=5, decimal_places=3)
+    weight = models.DecimalField(max_digits=5, decimal_places=2)
 
 
 class Drug(models.Model):
     name = models.CharField(max_length=100)
     number_of_pills = models.IntegerField()
+    description = models.TextField(null=True)
     gram = models.IntegerField()
+    picture = models.ImageField(null=True, blank=True)
 
 
 class Prescription(models.Model):
