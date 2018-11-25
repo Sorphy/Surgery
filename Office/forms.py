@@ -8,6 +8,7 @@ class Patient_form(forms.ModelForm):
         model = Patient
         exclude = []
 
+
 class Drug_form(forms.ModelForm):
     class Meta:
         model = Drug
@@ -16,3 +17,4 @@ class Drug_form(forms.ModelForm):
         widgets = {
             'description': Textarea(attrs={'cols': 80, 'rows': 50}),
         }
+

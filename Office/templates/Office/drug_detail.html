@@ -1,15 +1,33 @@
 {% extends 'Office/layout.html' %}
-
+{% load static %}
 {% block content %}
-
-    <ul class="collection with-header">
-        <li class="collection-header"><h4>{{ drug.name }}</h4></li>
-        <li class="collection-item">Drug ID: {{ drug.id }}</li>
-        <li class="collection-item">Gram: {{ drug.gram }} mg</li>
-        <li class="collection-item">Number of pills: {{ drug.number_of_pills }}</li>
-    </ul>
-    <p>
-        <b>Description:</b><br>
-        {{ drug.description }}
-    </p>
+    <div class="row">
+        <div class="col s2 offset-s10">
+            <a class="btn-floating btn-large waves-effect waves-light blue" href="{% url 'update_drug' drug.id %}"><i class="material-icons">update</i></a>
+            <a class="btn-floating btn-large waves-effect waves-light red" href="{% url 'delete_drug' drug.id %}"><i class="material-icons">delete</i></a>
+        </div>
+    </div>
+    <div class="row">
+            <div class="col s3">
+                {% if drug.picture.url != None %}
+                    <img src="{{ drug.picture.url }}" alt="{{ drug.picture.url }}" height="250px">
+                {% else%}
+                    <img src="{% static 'Office/unknown.jpg' %}" alt="{% static 'unknown.jpg' %}" height="250px">
+                {% endif %}
+            </div>
+        <div class="col s9">
+            <ul class="collection with-header">
+                <li class="collection-header"><h4>{{ drug.name }}</h4></li>
+                <li class="collection-item">Drug ID: {{ drug.id }}</li>
+                <li class="collection-item">Gram: {{ drug.gram }} mg</li>
+                <li class="collection-item">Number of pills: {{ drug.number_of_pills }}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <p>
+            <b>Description:</b><br>
+            {{ drug.description }}
+        </p>
+    </div>
 {% endblock %}

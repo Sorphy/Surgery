@@ -1,4 +1,5 @@
 from django.db import models
+from Surgery import settings
 
 # Create your models here.
 
@@ -16,7 +17,7 @@ class Drug(models.Model):
     number_of_pills = models.IntegerField()
     description = models.TextField(null=True)
     gram = models.IntegerField()
-    picture = models.ImageField(null=True, blank=True)
+    picture = models.ImageField(null=True, blank=True, upload_to='pictures/%Y/%m/%d/')
 
 
 class Prescription(models.Model):
