@@ -1,0 +1,14 @@
+{% extends 'Office/layout.html' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col s4">
+            <form action="{% url 'add_prescription' %}" method="POST">
+                {% csrf_token %}
+                {{ prescription_form.as_p }}
+                <input type="submit" class="waves-effect waves-light btn" value="Add">
+            </form>
+        </div>
+    </div>
+{% endblock %}

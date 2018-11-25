@@ -157,3 +157,74 @@ def update_drug(request, id):
                 'drug_id': drug.id
             }
             return render(request, 'Office/update_drug.html', context)
+
+
+def prescriptions(request):
+    context = {
+        'prescriptions': models.Prescription.objects.all()
+    }
+    return render(request, 'Office/prescriptions.html', context)
+
+
+def add_prescription(request):
+    if request.method == 'GET':
+        context = {
+            'prescription_form': forms.PrescriptionForm()
+        }
+        return render(request, 'Office/add_prescription.html', context)
+    else:
+        prescription_form = forms.PrescriptionForm(request.POST)
+        if prescription_form.is_valid():
+            prescription_form.save()
+            return redirect('prescriptions')
+        else:
+            context = {
+                'prescription_form': forms.PrescriptionForm(request.POST)
+            }
+            return render(request, 'Office/add_prescription.html', context)
+
+
+def prescription_detail(request, id):
+    context = {
+         'prescription': get_object_or_404(models.Prescription, pk=id)
+    }
+
+    return render(request, 'Office/prescription_detail.html', context)
+
+
+def update_prescription(request, id):
+    prescription = get_object_or_404(models.Prescription, pk=id)
+    if request.method == 'GET':
+        prescription_form = forms.PrescriptionForm(initial={
+            'patient': prescription.patient,
+            'drug': prescription.drug,
+            'date': prescription.date,
+        })
+
+        context = {
+            'prescription_form': prescription_form,
+            'prescription_id': prescription.id
+        }
+        return render(request, 'Office/update_prescription.html', context)
+    else:
+        prescription_form = forms.PrescriptionForm(request.POST)
+        if prescription_form.is_valid():
+            prescription.patient = prescription_form.cleaned_data['patient']
+            prescription.drug = prescription_form.cleaned_data['drug']
+            prescription.date = prescription_form.cleaned_data['date']
+            prescription.save()
+            return redirect('prescription_detail', prescription.id)
+        else:
+            context = {
+                'prescription_form': forms.PrescriptionForm(request.POST),
+                'prescription_id': prescription.id
+            }
+            return render(request, 'Office/update_prescription.html', context)
+
+
+def delete_prescription(request, id):
+    prescription = get_object_or_404(models.Prescription, pk=id)
+    prescription.delete()
+    return redirect('prescriptions')
+
+
