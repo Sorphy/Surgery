@@ -3,13 +3,13 @@ from .models import Patient, Drug, Prescription
 from django.forms import Textarea
 
 
-class Patient_form(forms.ModelForm):
+class PatientForm(forms.ModelForm):
     class Meta:
         model = Patient
         exclude = []
 
 
-class Drug_form(forms.ModelForm):
+class DrugForm(forms.ModelForm):
     class Meta:
         model = Drug
         exclude = []

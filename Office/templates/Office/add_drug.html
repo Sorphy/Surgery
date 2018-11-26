@@ -3,7 +3,7 @@
 {% block content %}
 
     <div class="row">
-        <div class="col s4">
+        <div class="col s6">
             <form action="{% url 'add_drug' %}" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ drug_form.as_p }}
