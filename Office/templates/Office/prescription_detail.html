@@ -12,7 +12,7 @@
             <li class="collection-header"><h4>Prescription id: {{ prescription.id }}</h4></li>
             <li class="collection-item">Patient: <a href="{% url 'patient_detail' prescription.patient.id %}">
                 {{ prescription.patient.first_name }} {{ prescription.patient.last_name }}</a></li>
-            <li class="collection-item">Drug name: <a href="{% url 'drug_detail' prescription.drug.id %}">{{ prescription.drug.name }}</a></li>
+            <li class="collection-item">Drug name: <a href="{% url 'drug_detail' prescription.drug.id %}">{{ prescription.drug }}</a></li>
             <li class="collection-item">Date: {{ prescription.date | date:'d. m. Y'}}</li>
         </ul>
     </div>

@@ -11,7 +11,7 @@
         <li class="collection-header"><h4>Drugs</h4></li>
         {% for drug in drugs %}
                 <li class="collection-item">
-                    <a href="{% url 'drug_detail' drug.id %}">{{ drug.name }}</a>
+                    <a href="{% url 'drug_detail' drug.id %}">{{ drug }}</a>
                 </li>
         {% endfor %}
     </ul>
