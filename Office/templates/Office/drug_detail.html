@@ -10,9 +10,9 @@
     <div class="row">
             <div class="col s3">
                 {% if drug.picture.url != None %}
-                    <img src="{{ drug.picture.url }}" alt="{{ drug.picture.url }}" height="250px">
+                    <img src="{{ drug.picture.url }}" alt="{{ drug.picture.url }}" height="250px" style="max-width: 250px">
                 {% else%}
-                    <img src="{% static 'Office/unknown.jpg' %}" alt="{% static 'unknown.jpg' %}" height="250px">
+                    <img src="{% static 'Office/unknown.jpg' %}" alt="{% static 'unknown.jpg' %}" height="250px" style="max-width: 250px">
                 {% endif %}
             </div>
         <div class="col s9">

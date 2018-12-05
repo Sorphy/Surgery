@@ -8,6 +8,10 @@ class PatientForm(forms.ModelForm):
         model = Patient
         exclude = []
 
+    def __init__(self, *args, **kwargs):
+        super(PatientForm, self).__init__(*args, **kwargs)
+        self.fields['birthday'].widget.attrs.update({'placeholder': '01/01/1111'})
+
 
 class DrugForm(forms.ModelForm):
     class Meta:
@@ -23,17 +27,8 @@ class PrescriptionForm(forms.ModelForm):
     class Meta:
         model = Prescription
         exclude = []
-    '''
+
     def __init__(self, *args, **kwargs):
         super(PrescriptionForm, self).__init__(*args, **kwargs)
-        self.fields['patient'].queryset = Patient.objects.all()
-        self.fields['drug'].queryset = Drug.objects.all()
-    '''
-'''
-class PrescriptionForm(forms.Form):
-    patient = forms.ModelMultipleChoiceField(queryset=Patient.objects.all())
-    drugs = forms.ModelMultipleChoiceField(queryset=Drug.objects.all())
-    date = forms.DateField()
-
-'''
+        self.fields['date'].widget.attrs.update({'placeholder': '01/01/1111'})
 

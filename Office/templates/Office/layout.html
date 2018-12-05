@@ -15,16 +15,31 @@
 </head>
 <body>
 <header>
-  <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="{% url 'index' %}" class="brand-logo">Surgery</a>
-      <ul class="right hide-on-med-and-down">
+
+  <nav>
+    <div class="nav-wrapper" style="background-color: rgb(38, 166, 154);">
+      <div style="margin-left:15%">
+        <a href="{% url 'index' %}" class="brand-logo">Surgery</a>
+      </div>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down" style="padding-right: 15%">
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'patients' %}">Patients</a></li>
+            <li><a href="{% url 'prescriptions' %}">Prescriptions</a></li>
+            <li><a href="{% url 'drugs' %}">Drugs</a></li>
+          </ul>
+    </div>
+  </nav>
+
+  <ul class="sidenav" id="mobile-demo">
         <li><a href="{% url 'index' %}">Home</a></li>
         <li><a href="{% url 'patients' %}">Patients</a></li>
         <li><a href="{% url 'prescriptions' %}">Prescriptions</a></li>
         <li><a href="{% url 'drugs' %}">Drugs</a></li>
-      </ul>
-    </div>
-  </nav>
+  </ul>
+
+
+
 </header>
 <div style="height: 50px"></div>
 <main>

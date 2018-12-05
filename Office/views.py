@@ -55,14 +55,7 @@ def delete_patient(request, id):
 def update_patient(request, id):
     patient = get_object_or_404(models.Patient, pk=id)
     if request.method == 'GET':
-        patient_form = forms.PatientForm(initial={
-            'first_name': patient.first_name,
-            'last_name': patient.last_name,
-            'birthday': patient.birthday,
-            'height': patient.height,
-            'weight': patient.weight,
-        })
-
+        patient_form = forms.PatientForm(instance=patient)
         context = {
             'patient_form': patient_form,
             'patient_id': patient.id
@@ -130,19 +123,13 @@ def delete_drug(request, id):
 def update_drug(request, id):
     drug = get_object_or_404(models.Drug, pk=id)
     if request.method == 'GET':
-        drug_form = forms.DrugForm(initial={
-            'name': drug.name,
-            'gram': drug.gram,
-            'number_of_pills': drug.number_of_pills,
-            'description': drug.description,
-            'picture': ''
-        })
+        drug_form = forms.DrugForm(instance=drug)
 
         context = {
             'drug_form': drug_form,
             'drug_id': drug.id
         }
-        return render(request, 'Office/update_drug.html', context)
+        return render(request, 'Office/add_drug.html', context)
     else:
         drug_form = forms.DrugForm(request.POST, request.FILES)
         if drug_form.is_valid():
@@ -198,12 +185,14 @@ def prescription_detail(request, id):
 def update_prescription(request, id):
     prescription = get_object_or_404(models.Prescription, pk=id)
     if request.method == 'GET':
+        '''
         prescription_form = forms.PrescriptionForm(initial={
             'patient': prescription.patient,
             'drug': prescription.drug,
             'date': prescription.date,
         })
-
+        '''
+        prescription_form = forms.PrescriptionForm(instance=prescription)
         context = {
             'prescription_form': prescription_form,
             'prescription_id': prescription.id
@@ -230,4 +219,7 @@ def delete_prescription(request, id):
     prescription.delete()
     return redirect('prescriptions')
 
+
+def not_found_error(request):
+    return render(request, 'Office/not_found.html', {})
 

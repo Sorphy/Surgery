@@ -129,3 +129,5 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'Office/media')
 MEDIA_URL = '/media/'
+
+handler404 = 'Office.views.not_found_error'
